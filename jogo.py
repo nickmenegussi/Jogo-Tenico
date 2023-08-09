@@ -1,6 +1,7 @@
 from arquivos_uteis import apresentar_programa,digitar_textos_repetitivos
 
 vidas = 5
+texto = "CAMINHO PERIGOSO! menos uma vida!"
 
 def escopos():
     apresentar_programa(f"Bem vindo ao jogo do Alquimista, Um jogo misterioso e divertido!")
@@ -52,7 +53,7 @@ def checkpoint1_missao1(nome):
 
         print(f"\033[1;32mCheckPoint 1:\nApós querer desenvolver uma amizade sincera voce conhece a filha do comerciante local e tem quatro opções de interação com ela:\033[m")
 
-        caminho_novo = 1
+        caminho_novo = int(input(""))
         
         if caminho_novo == 1:
             chekpoint1_final_caminho1_missao1(nome)
@@ -65,10 +66,12 @@ def checkpoint1_missao1(nome):
         else:
             print("Erro , digite novamente!")
             checkpoint1_missao1(nome)
+
+
 def chekpoint1_final_caminho1_missao1(nome):
-    global vidas
-    print("\033[1;31mCAMINHO PERIGOSO! menos uma vida!")
-    print(f"{nome} (voce) e a filha do comerciante decidem investigar a lenda antiga durante o festival em busca de pistas sobre o tesouro. Voces aprendem com os moradores locais sobre as histórias e mitos que cercam o tesouro escondido. No entanto, as informações são vagas e contraditórias, levando-os a se questionar sobre a veracidade da lenda.\033[m")
+    global vidas,texto
+    digitar_textos_repetitivos(texto)
+    digitar_textos_repetitivos(f"{nome} (voce) e a filha do comerciante decidem investigar a lenda antiga durante o festival em busca de pistas sobre o tesouro. Voces aprendem com os moradores locais sobre as histórias e mitos que cercam o tesouro escondido. No entanto, as informações são vagas e contraditórias, levando-os a se questionar sobre a veracidade da lenda.\033[m")
 
     vidas -= 1
 
