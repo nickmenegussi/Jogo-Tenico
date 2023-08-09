@@ -10,7 +10,7 @@ def escopos():
     nome = str(input("Qual é o seu nome? "))
     jogo(nome)
     imprimir_resultado()
-
+    jogar_novamente(nome)
 
 def jogo(nome): 
     global vidas
@@ -205,9 +205,10 @@ def checkpoint_final_alquimista(nome):
     vidas += 1
 
 def checkpoint_final_continuar(nome):
+    global vidas
     print("\033[1;31mCHECKPOINT FINAL - FINAL AO CONTINUAR\033[m")
     print(f"Infelizmente, {nome}, ao continuar seguindo a rota segura sem aplicar os ensinamentos do Alquimista, você chega ao tesouro, mas percebe que algo está faltando. O tesouro em si não traz a satisfação que você esperava.")
-
+    vida -= 1
 def unir_se_ao_grupo(nome):
     global vidas
     print("Você escolhe se unir a um grupo de viajantes em busca do tesouro.")
@@ -245,9 +246,6 @@ def unir_se_ao_grupo(nome):
         elif caminho_novo == 2:
             checkpoint_final_colaborativo()
             print("Você escolhe a trilha da direita. Ela leva você a um desfiladeiro perigoso, onde você precisa usar suas habilidades para atravessá-lo.")
-
-        else:
-            print("ERRO! DIGITE NOVAMENTE!")
             
     else:
         print("ERRO! DIGITE NOVAMENTE!")
@@ -273,5 +271,16 @@ def imprimir_resultado():
     else:
         print(f"\033[1;31mDERROTA! Infelizmente, não foi possível alcançar o tesouro desta vez.Pois voce ficou com um total de {vidas} vidas e o maximo era 5!\033[m")
 
+def jogar_novamente(nome):
+    while True:
+        jogar_denovo = input(F"{nome}, voce deseja jogar novamente? [S/N] ").strip().upper()
+
+        if jogar_denovo in "S":
+            jogo(nome)
+        elif jogar_denovo in 'N':
+            break
+        else:
+            print("ERRO, digite novamente")
+            jogar_denovo = input(F"{nome}, voce deseja jogar novamente? [S/N] ")
 
 escopos()
